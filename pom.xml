@@ -8,7 +8,7 @@
     <artifactId>quarkus-ext-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>TMDb API Client Quarkus - Parent</name>
+    <name>TMDb API Client - Quarkus Support Parent</name>
     <modules>
         <module>deployment</module>
         <module>runtime</module>
