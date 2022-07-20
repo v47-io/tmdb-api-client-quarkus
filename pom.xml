@@ -14,13 +14,14 @@
         <module>runtime</module>
     </modules>
     <properties>
-        <compiler-plugin.version>3.8.1</compiler-plugin.version>
+        <compiler-plugin.version>3.10.1</compiler-plugin.version>
         <failsafe-plugin.version>${surefire-plugin.version}</failsafe-plugin.version>
         <maven.compiler.release>11</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <quarkus.version>2.10.2.Final</quarkus.version>
+        <quarkus.version>2.10.3.Final</quarkus.version>
         <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
         <tmdb-api-client.version>3.0.2</tmdb-api-client.version>
     </properties>
     <dependencyManagement>
@@ -46,6 +47,12 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
     <build>
         <pluginManagement>
             <plugins>
@@ -102,14 +109,17 @@
                 <version>4.1</version>
                 <configuration>
                     <properties>
-                        <owner>Alex Katlein</owner>
-                        <email>dev@vemilyus.com</email>
+                        <year>2022</year>
+                        <owner>the tmdb-api-client authors</owner>
                     </properties>
                     <licenseSets>
                         <licenseSet>
                             <header>com/mycila/maven/plugin/license/templates/BSD-3.txt</header>
                             <excludes>
+                                <exclude>**/LICENSE</exclude>
                                 <exclude>**/README.md</exclude>
+                                <exclude>**/pom.xml</exclude>
+                                <exclude>**/*.properties</exclude>
                                 <exclude>src/test/resources/**</exclude>
                                 <exclude>src/main/resources/**</exclude>
                             </excludes>
@@ -119,4 +129,64 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${nexus-staging-maven-plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.4.0</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
