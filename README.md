@@ -69,6 +69,10 @@ This library makes it possible to use the `TMDb API Client` in Quarkus and also 
 required legwork to make it native compatible, so you can safely use it in your native Quarkus
 applications.
 
+The Quarkus extension provides a default instance of `TmdbClient`, but if you want to create your
+own, e.g. because you want to supply a different API-Key at runtime, you can simply inject an 
+instance of `HttpClientFactory` and create your own `TmdbClient` instance.
+
 ## Documentation
 
 Please refer to the documentation of `TMDb API Client` [here][tmdb-api-client-docs].
