@@ -23,15 +23,13 @@ jobs:
           API_KEY: ${{ secrets.TMDB_API_KEY }}
       - name: Read library version
         id: version_property
-        uses: mavrosxristoforos/get-xml-info@1.1.0
-        with:
-          xml-file: pom.xml
-          xpath: '//project/version'
+        run: echo "::set-output name=value::$(grep -o -P -e '<version>\K(\d+\.?)+(-SNAPSHOT)?' pom.xml | head -n1)"
       - name: Import GPG secret key
         run: |
           cat <(echo -e "${{ secrets.OSSRH_SIGNING_SECRET_KEY_RING_BASE64 }}") | base64 -d - | gpg --batch --import
           gpg --list-secret-keys --keyid-format SHORT
       - name: Publish to Central Repository
+        # if: ${{ !endsWith(steps.version_property.outputs.value, '-SNAPSHOT') }}
         run: mvn --batch-mode --settings .github/mvn-settings.xml clean deploy -P release
         env:
           API_KEY: ${{ secrets.TMDB_API_KEY }}
