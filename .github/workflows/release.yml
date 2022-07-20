@@ -26,7 +26,7 @@ jobs:
         uses: mavrosxristoforos/get-xml-info@1.1.0
         with:
           xml-file: pom.xml
-          xpath: '/project/version'
+          xpath: '//project/version'
       - name: Import GPG secret key
         run: |
           cat <(echo -e "${{ secrets.OSSRH_SIGNING_SECRET_KEY_RING_BASE64 }}") | base64 -d - | gpg --batch --import
