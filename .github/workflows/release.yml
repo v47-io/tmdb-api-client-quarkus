@@ -29,7 +29,7 @@ jobs:
           xpath: '/project/version'
       - name: Import GPG secret key
         run: |
-          cat <(echo -e "${{ secrets.OSSRH_SIGNING_SECRET_KEY_RING_BASE64 }}") | base64 -r - | gpg --batch --import
+          cat <(echo -e "${{ secrets.OSSRH_SIGNING_SECRET_KEY_RING_BASE64 }}") | base64 -d - | gpg --batch --import
           gpg --list-secret-keys --keyid-format SHORT
       - name: Publish to Central Repository
         run: mvn --batch-mode --settings .github/mvn-settings.xml clean deploy -P release
