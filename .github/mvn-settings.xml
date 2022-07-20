@@ -6,7 +6,7 @@
             <id>release</id>
             <properties>
                 <gpg.executable>gpg</gpg.executable>
-                <gpg.keyname>${env.OSSRH_SIGNING_KEY_ID}</gpg.keyname>
+                <gpg.keyname>${env.SIGNING_KEY_ID}</gpg.keyname>
             </properties>
         </profile>
     </profiles>
@@ -17,8 +17,8 @@
             <password>${env.OSSRH_PASS}</password>
         </server>
         <server>
-            <id>${env.OSSRH_SIGNING_KEY_ID}</id>
-            <passphrase>${env.OSSRH_SIGNING_PASSWORD}</passphrase>
+            <id>${env.SIGNING_KEY_ID}</id>
+            <passphrase>${env.SIGNING_PASSWORD}</passphrase>
         </server>
     </servers>
 </settings>
