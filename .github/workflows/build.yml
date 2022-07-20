@@ -26,6 +26,13 @@ jobs:
         run: mvn --batch-mode --update-snapshots install
         env:
           API_KEY: ${{ secrets.TMDB_API_KEY }}
+      - name: Setup GraalVM
+        uses: graalvm/setup-graalvm@v1
+        with:
+          version: latest
+          java-version: 11
+          components: native-image
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Run Integration Tests
         run: |
           cd integration-tests
