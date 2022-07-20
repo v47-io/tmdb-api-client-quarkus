@@ -4,6 +4,7 @@
         <profile>
             <id>release</id>
             <properties>
+                <gpg.executable>gpg</gpg.executable>
                 <gpg.keyname>${env.OSSRH_SIGNING_KEY_ID}</gpg.keyname>
                 <gpg.passphrase>${env.OSSRH_SIGNING_PASSWORD}</gpg.passphrase>
             </properties>
