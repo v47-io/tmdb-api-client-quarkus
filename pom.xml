@@ -26,9 +26,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/v47-io/tmdb-api-client-quarkus.git</connection>
+        <connection>scm:git:https://github.com/v47-io/tmdb-api-client-quarkus.git</connection>
         <developerConnection>
-            scm:git:git://github.com/v47-io/tmdb-api-client-quarkus.git
+            scm:git:ssh://github.com/v47-io/tmdb-api-client-quarkus.git
         </developerConnection>
         <url>https://github.com/v47-io/tmdb-api-client-quarkus</url>
     </scm>
