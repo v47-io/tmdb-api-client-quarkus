@@ -37,9 +37,3 @@ jobs:
           OSSRH_PASS: ${{ secrets.OSSRH_PASS }}
           SIGNING_PASSWORD: ${{ secrets.OSSRH_SIGNING_PASSWORD }}
           SIGNING_KEY_ID: ${{ secrets.OSSRH_SIGNING_KEY_ID }}
-      - name: Archive logs on failure
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-test-reports
-          path: build/reports
