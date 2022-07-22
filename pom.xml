@@ -5,7 +5,7 @@
     <artifactId>quarkus-parent</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>TMDb API Client - Quarkus Support Parent</name>
+    <name>TMDb API Client :: quarkus-parent</name>
     <description>Parent POM for the TMDb API Client Quarkus extension</description>
     <url>https://github.com/v47-io/tmdb-api-client-quarkus</url>
 
