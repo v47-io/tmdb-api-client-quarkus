@@ -1,7 +1,7 @@
 # TMDb API Client (Quarkus Extension)
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/v47-io/tmdb-api-client-quarkus/Build)
-![Maven Central](https://img.shields.io/maven-central/v/io.v47.tmdb-api-client/quarkus)
+[![Maven Central](https://img.shields.io/maven-central/v/io.v47.tmdb-api-client/quarkus)](https://search.maven.org/artifact/io.v47.tmdb-api-client/quarkus)
 ![GitHub](https://img.shields.io/github/license/v47-io/tmdb-api-client-quarkus)
 
 This is the extension that provides proper Quarkus support for [TMDb API Client][tmdb-api-client].
@@ -70,7 +70,7 @@ required legwork to make it native compatible, so you can safely use it in your 
 applications.
 
 The Quarkus extension provides a default instance of `TmdbClient`, but if you want to create your
-own, e.g. because you want to supply a different API-Key at runtime, you can simply inject an 
+own, e.g. because you want to supply a different API-Key at runtime, you can simply inject an
 instance of `HttpClientFactory` and create your own `TmdbClient` instance.
 
 ## Documentation
