@@ -63,6 +63,43 @@ public class MyService {
 }
 ```
 
+### Using a custom `TmdbApiKeyProvider`
+
+By default, the extension will use its own implementation that uses the configuration property
+mentioned above. If you want to control how the API Key is obtained, e.g. dynamically during
+runtime, you can create your own `TmdbApiKeyProvider` implementation.
+
+__IMPORTANT:__ You must still provide a value for the configuration property `tmdb.client.api-key`.
+However, since you are providing your own implementation of `TmdbApiKeyProvider` it may be a value
+like `dummy` or `not a valid API key`.
+
+#### Example implementation
+
+```java
+package myPackage;
+
+import io.quarkus.arc.Priority;
+import io.v47.tmdb.api.key.TmdbApiKeyProvider;
+import org.jetbrains.annotations.NotNull;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Alternative;
+import javax.inject.Inject;
+
+@Alternative
+@Priority(1)
+@ApplicationScoped
+public class MyApiKeyProvider implements TmdbApiKeyProvider {
+    @NotNull
+    @Override
+    public String getApiKey() {
+        return "my-own-api-key";
+    }
+}
+```
+
+Quarkus will then use an instance of `MyApiKeyProvider` when creating the default `TmdbClient` bean.
+
 ## Features
 
 This library makes it possible to use the `TMDb API Client` in Quarkus and also does all the
