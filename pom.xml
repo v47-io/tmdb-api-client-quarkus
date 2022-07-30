@@ -141,13 +141,9 @@
                 <artifactId>license-maven-plugin</artifactId>
                 <version>4.1</version>
                 <configuration>
-                    <properties>
-                        <year>2022</year>
-                        <owner>the tmdb-api-client authors</owner>
-                    </properties>
                     <licenseSets>
                         <licenseSet>
-                            <header>com/mycila/maven/plugin/license/templates/BSD-3.txt</header>
+                            <header>LICENSE</header>
                             <excludes>
                                 <exclude>**/LICENSE</exclude>
                                 <exclude>**/README.md</exclude>
