@@ -11,8 +11,8 @@
 
     <licenses>
         <license>
-            <name>BSD 3-Clause License</name>
-            <url>https://opensource.org/licenses/BSD-3-Clause</url>
+            <name>BSD 3-Clause Clear License</name>
+            <url>https://spdx.org/licenses/BSD-3-Clause-Clear.html</url>
         </license>
     </licenses>
 
