@@ -1,6 +1,6 @@
 # TMDb API Client (Quarkus Extension)
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/v47-io/tmdb-api-client-quarkus/Build)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/v47-io/tmdb-api-client-quarkus/build.yml?branch=main)
 [![Maven Central](https://img.shields.io/maven-central/v/io.v47.tmdb-api-client/quarkus)](https://search.maven.org/artifact/io.v47.tmdb-api-client/quarkus)
 ![GitHub](https://img.shields.io/github/license/v47-io/tmdb-api-client-quarkus)
 
