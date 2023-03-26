@@ -14,12 +14,12 @@ Add the following dependency to your project:
 
 ```groovy
 // Gradle
-implementation 'io.v47.tmdb-api-client:quarkus:1.6.0'
+implementation 'io.v47.tmdb-api-client:quarkus:2.0.0'
 ```
 
 ```kotlin
 // Gradle Kotlin DSL
-implementation("io.v47.tmdb-api-client:quarkus:1.6.0")
+implementation("io.v47.tmdb-api-client:quarkus:2.0.0")
 ```
 
 ```xml
@@ -28,7 +28,7 @@ implementation("io.v47.tmdb-api-client:quarkus:1.6.0")
     <dependency>
         <groupId>io.v47.tmdb-api-client</groupId>
         <artifactId>quarkus</artifactId>
-        <version>1.6.0</version>
+        <version>2.0.0</version>
     </dependency>
 </dependencies>
 ```
@@ -39,7 +39,7 @@ so you can get started immediately.
 Add the following configuration property to your `application.properties`:
 
 ```properties
-tmdb.client.api-key=${API_KEY}
+tmdb-client.api-key=${API_KEY}
 ```
 
 Then you can simply inject an instance of `TmdbClient` into your services and controllers:
@@ -69,7 +69,7 @@ By default, the extension will use its own implementation that uses the configur
 mentioned above. If you want to control how the API Key is obtained, e.g. dynamically during
 runtime, you can create your own `TmdbApiKeyProvider` implementation.
 
-__IMPORTANT:__ You must still provide a value for the configuration property `tmdb.client.api-key`.
+__IMPORTANT:__ You must still provide a value for the configuration property `tmdb-client.api-key`.
 However, since you are providing your own implementation of `TmdbApiKeyProvider` it may be a value
 like `dummy` or `not a valid API key`.
 
@@ -82,9 +82,9 @@ import io.quarkus.arc.Priority;
 import io.v47.tmdb.api.key.TmdbApiKeyProvider;
 import org.jetbrains.annotations.NotNull;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Alternative;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Alternative;
+import jakarta.inject.Inject;
 
 @Alternative
 @Priority(1)
