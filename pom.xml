@@ -44,10 +44,10 @@
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <quarkus.version>3.0.1.Final</quarkus.version>
+        <quarkus.version>3.0.2.Final</quarkus.version>
         <surefire-plugin.version>3.0.0</surefire-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
-        <tmdb-api-client.version>4.0.0</tmdb-api-client.version>
+        <tmdb-api-client.version>4.1.0</tmdb-api-client.version>
     </properties>
 
     <dependencyManagement>
@@ -199,7 +199,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.4.0</version>
+                        <version>3.5.0</version>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>
