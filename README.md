@@ -120,7 +120,7 @@ Please refer to the documentation of `TMDb API Client` [here][tmdb-api-client-do
 
 Requirements:
 
-- JDK 11
+- JDK 17
 - GraalVM (esp. `native-image`) or Docker
 
 For local building and testing you need to configure a TMDb API-Key using the environment variable
