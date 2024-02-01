@@ -1,10 +1,10 @@
-# TMDb API Client (Quarkus Extension)
+# TMDB API Client (Quarkus Extension)
 
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/v47-io/tmdb-api-client-quarkus/build.yml?branch=main)
 [![Maven Central](https://img.shields.io/maven-central/v/io.v47.tmdb-api-client/quarkus)](https://search.maven.org/artifact/io.v47.tmdb-api-client/quarkus)
 ![GitHub](https://img.shields.io/github/license/v47-io/tmdb-api-client-quarkus)
 
-This is the extension that provides proper Quarkus support for [TMDb API Client][tmdb-api-client].
+This is the extension that provides proper Quarkus support for [TMDB API Client][tmdb-api-client].
 
 [tmdb-api-client]: https://github.com/v47-io/tmdb-api-client
 
@@ -102,7 +102,7 @@ Quarkus will then use an instance of `MyApiKeyProvider` when creating the defaul
 
 ## Features
 
-This library makes it possible to use the `TMDb API Client` in Quarkus and also does all the
+This library makes it possible to use the `TMDB API Client` in Quarkus and also does all the
 required legwork to make it native compatible, so you can safely use it in your native Quarkus
 applications.
 
@@ -112,7 +112,7 @@ instance of `HttpClientFactory` and create your own `TmdbClient` instance.
 
 ## Documentation
 
-Please refer to the documentation of `TMDb API Client` [here][tmdb-api-client-docs].
+Please refer to the documentation of `TMDB API Client` [here][tmdb-api-client-docs].
 
 [tmdb-api-client-docs]: https://v47-io.github.io/tmdb-api-client/
 
@@ -123,8 +123,10 @@ Requirements:
 - JDK 17
 - GraalVM (esp. `native-image`) or Docker
 
-For local building and testing you need to configure a TMDb API-Key using the environment variable
-`API_KEY`.
+For local building and testing you need to configure a TMDB API-Key using the environment variable
+`API_KEY` (Get yours [here][tmdb-account-settings]).
+
+[tmdb-account-settings]: https://www.themoviedb.org/settings/api
 
 Then you can simply run a complete build using these commands:
 
