@@ -14,12 +14,12 @@ Add the following dependency to your project:
 
 ```groovy
 // Gradle
-implementation 'io.v47.tmdb-api-client:quarkus:4.5.0'
+implementation 'io.v47.tmdb-api-client:quarkus:4.7.1'
 ```
 
 ```kotlin
 // Gradle Kotlin DSL
-implementation("io.v47.tmdb-api-client:quarkus:4.5.0")
+implementation("io.v47.tmdb-api-client:quarkus:4.7.1")
 ```
 
 ```xml
@@ -28,7 +28,7 @@ implementation("io.v47.tmdb-api-client:quarkus:4.5.0")
     <dependency>
         <groupId>io.v47.tmdb-api-client</groupId>
         <artifactId>quarkus</artifactId>
-        <version>4.5.0</version>
+        <version>4.7.1</version>
     </dependency>
 </dependencies>
 ```
