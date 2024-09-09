@@ -52,7 +52,7 @@
         <quarkus.version>3.14.2</quarkus.version>
         <surefire-plugin.version>3.5.0</surefire-plugin.version>
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
-        <tmdb-api-client.version>4.8.0</tmdb-api-client.version>
+        <tmdb-api-client.version>4.8.1</tmdb-api-client.version>
     </properties>
 
     <dependencyManagement>
