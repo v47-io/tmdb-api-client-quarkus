@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.v47.tmdb-api-client</groupId>
     <artifactId>quarkus-parent</artifactId>
-    <version>4.9.0</version>
+    <version>4.9.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>TMDb API Client :: quarkus-parent</name>
     <description>Parent POM for the TMDb API Client Quarkus extension</description>
