@@ -1,7 +1,7 @@
-/*
+/**
  * The Clear BSD License
  *
- * Copyright (c) 2022, the tmdb-api-client authors
+ * Copyright (c) 2025, the tmdb-api-client authors
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,25 +32,18 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package io.v47.tmdb.http.quarkus;
+package internal
 
-import io.quarkus.test.QuarkusUnitTest;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
+import name.remal.gradle_plugins.plugins.publish.ossrh.RepositoryHandlerOssrhExtension
+import org.gradle.api.artifacts.dsl.RepositoryHandler
+import org.gradle.api.artifacts.repositories.MavenArtifactRepository
+import org.gradle.kotlin.dsl.withConvention
 
-public class QuarkusExtTest {
-
-    // Start unit test with your extension loaded
-    @RegisterExtension
-    static final QuarkusUnitTest unitTest = new QuarkusUnitTest().withConfigurationResource("application.properties")
-                                                                 .setArchiveProducer(() -> ShrinkWrap.create(JavaArchive.class));
-
-    @Test
-    public void writeYourOwnUnitTest() {
-        // Write your unit tests here - see the testing extension guide https://quarkus.io/guides/writing-extensions#testing-extensions for more information
-        Assertions.assertTrue(true, "Add some assertions to " + getClass().getName());
+internal fun RepositoryHandler.ossrh(block: MavenArtifactRepository.() -> Unit) {
+    @Suppress("DEPRECATION")
+    withConvention(RepositoryHandlerOssrhExtension::class) {
+        ossrh {
+            block()
+        }
     }
 }

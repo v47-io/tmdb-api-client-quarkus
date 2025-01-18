@@ -1,0 +1,55 @@
+[versions]
+detekt = "1.23.7"
+dokka = "2.0.0"
+git-properties = "2.4.2"
+jackson = "2.18.2"
+junit-jupiter = "5.11.4"
+kotlin = "2.0.21"
+license = "0.16.1"
+logback = "1.5.16"
+nvi18n = "1.29"
+quarkus = "3.17.7"
+release = "3.1.0"
+remal-gradle-plugins = "1.9.2"
+slf4j = "2.0.16"
+tmdb-api-client = "4.10.1"
+
+[libraries]
+# To be able to apply plugins in convention plugins
+plugin-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+plugin-dokka = { module = "org.jetbrains.dokka:org.jetbrains.dokka.gradle.plugin", version.ref = "dokka" }
+plugin-git-properties = { module = "com.gorylenko.gradle-git-properties:gradle-git-properties", version.ref = "git-properties" }
+plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+plugin-kotlin-allopen = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref = "kotlin" }
+plugin-kotlin-spring = { module = "org.jetbrains.kotlin.plugin.spring:org.jetbrains.kotlin.plugin.spring.gradle.plugin", version.ref = "kotlin" }
+plugin-license = { module = "gradle.plugin.com.hierynomus.gradle.plugins:license-gradle-plugin", version.ref = "license" }
+plugin-quarkus = { module = "io.quarkus:gradle-application-plugin", version.ref = "quarkus" }
+plugin-quarkus-extension = { module = "io.quarkus.extension:gradle-extension-plugin", version.ref = "quarkus" }
+plugin-release = { module = "net.researchgate.release:net.researchgate.release.gradle.plugin", version.ref = "release" }
+
+# All other deps
+jacksonModuleKotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+junitApi = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
+junitEngine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter" }
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+nvI18n = { module = "com.neovisionaries:nv-i18n", version.ref = "nvi18n" }
+quarkus-bom = { module = "io.quarkus:quarkus-bom", version.ref = "quarkus" }
+quarkus-arc = { module = "io.quarkus:quarkus-arc" }
+quarkus-arc-deployment = { module = "io.quarkus:quarkus-arc-deployment" }
+quarkus-jackson = { module = "io.quarkus:quarkus-jackson" }
+quarkus-jackson-deployment = { module = "io.quarkus:quarkus-jackson-deployment" }
+quarkus-junit5 = { module = "io.quarkus:quarkus-junit5" }
+quarkus-kotlin = { module = "io.quarkus:quarkus-kotlin" }
+quarkus-kotlin-deployment = { module = "io.quarkus:quarkus-kotlin-deployment" }
+quarkus-rest-jackson = { module = "io.quarkus:quarkus-rest-jackson" }
+quarkus-vertx = { module = "io.quarkus:quarkus-vertx" }
+quarkus-vertx-deployment = { module = "io.quarkus:quarkus-vertx-deployment" }
+remalGradlePlugins = { module = "name.remal:gradle-plugins", version.ref = "remal-gradle-plugins" }
+rest-assured = { module = "io.rest-assured:rest-assured" }
+slf4j = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+smallrye-mutiny-vertx-web-client = { module = "io.smallrye.reactive:smallrye-mutiny-vertx-web-client" }
+tmdb-api = { module = "io.v47.tmdb-api-client:api", version.ref = "tmdb-api-client" }
+tmdb-tck = { module = "io.v47.tmdb-api-client:http-client-tck", version.ref = "tmdb-api-client" }
+
+[plugins]
+license = { id = "com.github.hierynomus.license", version.ref = "license" }

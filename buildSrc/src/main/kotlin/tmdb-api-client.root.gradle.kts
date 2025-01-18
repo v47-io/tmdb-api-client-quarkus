@@ -1,7 +1,7 @@
 /*
  * The Clear BSD License
  *
- * Copyright (c) 2022, the tmdb-api-client authors
+ * Copyright (c) 2025, the tmdb-api-client authors
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,25 +32,22 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package io.v47.tmdb.http.quarkus;
+import io.gitlab.arturbosch.detekt.report.ReportMergeTask
+import name.remal.gradle_plugins.dsl.extensions.withPlugin
+import net.researchgate.release.ReleaseExtension
 
-import io.quarkus.test.QuarkusDevModeTest;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
+plugins {
+    id("org.jetbrains.dokka")
+}
 
-public class QuarkusExtDevModeTest {
+repositories {
+    mavenCentral()
+}
 
-    // Start hot reload (DevMode) test with your extension loaded
-    @RegisterExtension
-    static final QuarkusDevModeTest devModeTest = new QuarkusDevModeTest().setArchiveProducer(() -> ShrinkWrap.create(
-            JavaArchive.class));
+tasks.register("reportMerge", ReportMergeTask::class.java) {
+    output = project.layout.buildDirectory.file("reports/detekt/merge.sarif")
+}
 
-    @Test
-    public void writeYourOwnDevModeTest() {
-        // Write your dev mode tests here - see the testing extension guide https://quarkus.io/guides/writing-extensions#testing-hot-reload for more information
-        Assertions.assertTrue(true, "Add dev mode assertions to " + getClass().getName());
-    }
+withPlugin("net.researchgate.release") {
+    extensions.getByType<ReleaseExtension>().tagTemplate = "v\$version"
 }
