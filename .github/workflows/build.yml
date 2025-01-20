@@ -21,20 +21,27 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-          cache: maven
-      - name: Build Quarkus Extension with Maven
-        run: mvn --batch-mode license:check install
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+      - name: Build and test using gradle
+        run: ./gradlew build
         env:
           API_KEY: ${{ secrets.TMDB_API_KEY }}
-      - name: Setup GraalVM
-        uses: graalvm/setup-graalvm@v1
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
         with:
-          java-version: 21
-          distribution: mandrel
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Run Integration Tests
-        run: |
-          cd integration-tests
-          mvn --batch-mode verify -P native-image
-        env:
-          API_KEY: ${{ secrets.TMDB_API_KEY }}
+          name: Tests
+          reporter: java-junit
+          path: '**/TEST-*.xml'
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        if: success() || failure()
+        with:
+          sarif_file: build/reports/detekt/merge.sarif
+      - name: Archive logs on failure
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-test-reports
+          path: build/reports
