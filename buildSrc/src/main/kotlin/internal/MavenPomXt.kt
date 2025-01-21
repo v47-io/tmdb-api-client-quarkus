@@ -32,28 +32,36 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-import internal.common
+package internal
 
-plugins {
-    `maven-publish`
-}
+import org.gradle.api.Project
+import org.gradle.api.publish.maven.MavenPom
+import org.gradle.kotlin.dsl.assign
 
-publishing {
-    publications {
-        create<MavenPublication>("relocation") {
-            groupId = "io.v47.tmdb-api-client"
-            version = "${project.version}"
+internal fun MavenPom.common(project: Project) {
+    name = "TMDB API Client :: Quarkus ${project.name}"
+    description = "TMDB API Client for Quarkus"
+    url = "https://github.com/v47-io/tmdb-api-client-quarkus"
 
-            pom {
-                common(project)
-
-                distributionManagement {
-                    relocation {
-                        groupId = "${project.group}"
-                        artifactId = project.name
-                    }
-                }
-            }
+    licenses {
+        license {
+            name = "BSD 3-Clause Clear License"
+            url = "https://spdx.org/licenses/BSD-3-Clause-Clear.html"
         }
+    }
+
+    developers {
+        developer {
+            id = "vemilyus"
+            name = "Alex Katlein"
+            email = "dev@vemilyus.com"
+        }
+    }
+
+    scm {
+        connection = "scm:git:https://github.com/v47-io/tmdb-api-client-quarkus.git"
+        developerConnection =
+            "scm:git:ssh://git@github.com/v47-io/tmdb-api-client-quarkus.git"
+        url = "https://github.com/v47-io/tmdb-api-client-quarkus"
     }
 }
